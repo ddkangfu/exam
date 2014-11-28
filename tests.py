@@ -2,7 +2,7 @@
 
 
 import unittest
-import converter import string_to_long
+from converter import string_to_long
 
 class ConverterTest(unittest.TestCase):
     def test_number_string_without_sign(self):
