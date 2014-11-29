@@ -9,7 +9,7 @@ def string_to_long(s):
     pattern = re.compile(r'^[+-]?[1-9]\d*|0$')
 
     if (not s) or (not pattern.match(s)):
-        return 0 #这里需要返回非法格式异常
+        raise ValueError("invalid literal for string_to_long() with base 10: '%s'" % s)
 
     rev_s = s[::-1]
     result = sum([int(math.pow(10, i)) * (ord(rev_s[i]) - ord('0')) for i in range(len(rev_s)) if rev_s[i] not in ['+', '-']])

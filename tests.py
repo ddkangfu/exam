@@ -23,7 +23,7 @@ class ConverterTest(unittest.TestCase):
     def test_number_string_with_negative_sign(self):
         expect = -654321
         result = string_to_long('-654321')
-        self.assertEqual(result, expect)        
+        self.assertEqual(result, expect)       
 
 
 if __name__ == '__main__':
