@@ -6,13 +6,9 @@ import math
 
 def string_to_long(s):
     s = s.strip()
-
-    if not s:
-        return 0 #这里需要返回非法格式异常
-
     pattern = re.compile(r'^[+-]?[1-9]\d*|0$')
-    match = pattern.match(s)
-    if not match:
+
+    if (not s) or (not pattern.match(s)):
         return 0 #这里需要返回非法格式异常
 
     rev_s = s[::-1]
