@@ -28,12 +28,22 @@ class ConverterTest(unittest.TestCase):
     def test_blank_number_string(self):
         expect = "invalid literal for string_to_long() with base 10: ''"
         err_message = ''
-        
+
         try:
             result = string_to_long('')
         except ValueError, ex:
             err_message = ex.message
-        self.assertEqual(err_message, expect)        
+        self.assertEqual(err_message, expect)
+
+    def test_non_numeric_string(self):
+        expect = "invalid literal for string_to_long() with base 10: 'abc'"
+        err_message = ''
+
+        try:
+            result = string_to_long('abc')
+        except ValueError, ex:
+            err_message = ex.message
+        self.assertEqual(err_message, expect)
 
 
 if __name__ == '__main__':
