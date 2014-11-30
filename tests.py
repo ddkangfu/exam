@@ -75,10 +75,18 @@ class ConverterTestCase(unittest.TestCase):
 
 class TriNaryTreeTaseCase(unittest.TestCase):
     def test_insert_one_node(self):
-        expect = "[5]"
+        expect = [5]
         tree = TriNaryTree()
         tree.insert(5)
-        self.assertEqual(tree.__str__(), expect)
+        self.assertEqual(str(tree), str(expect))
+
+    def test_insert_multiple_node(self):
+        expect = [5, 4, 2, 2, 5, 9, 7]
+        tree = TriNaryTree()
+        source = [5, 4, 9, 5, 7, 2, 2]
+        for number in source:
+            tree.insert(number)
+        self.assertEqual(str(tree), str(expect))
 
 
 if __name__ == '__main__':
