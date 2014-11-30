@@ -1,8 +1,8 @@
 #coding=utf-8
 
-
 import unittest
 from converter import string_to_long
+
 
 class ConverterTest(unittest.TestCase):
     def test_number_string_without_sign(self):
@@ -44,6 +44,31 @@ class ConverterTest(unittest.TestCase):
         except ValueError, ex:
             err_message = ex.message
         self.assertEqual(err_message, expect)
+
+    def test_number_string_with_none_value(self):
+        expect = "invalid literal for string_to_long() with base 10: 'None'"
+        err_message = ''
+
+        try:
+            result = string_to_long(None)
+        except ValueError, ex:
+            err_message = ex.message
+        self.assertEqual(err_message, expect)
+
+    def test_number_string_with_a_space_character(self):
+        expect = "invalid literal for string_to_long() with base 10: ' '"
+        err_message = ''
+
+        try:
+            result = string_to_long(' ')
+        except ValueError, ex:
+            err_message = ex.message
+        self.assertEqual(err_message, expect)
+
+    def test_number_string_with_a_space_character_as_prefix(self):
+        expect = 123456
+        result = string_to_long(' 123456')
+        self.assertEqual(result, expect)       
 
 
 if __name__ == '__main__':
