@@ -1,10 +1,12 @@
 #coding=utf-8
 
 import unittest
+
 from converter import string_to_long
+from tri_nary_tree import TriNaryTree
 
 
-class ConverterTest(unittest.TestCase):
+class ConverterTestCase(unittest.TestCase):
     def test_number_string_without_sign(self):
         expect = 123456
         result = string_to_long('123456')
@@ -68,7 +70,15 @@ class ConverterTest(unittest.TestCase):
     def test_number_string_with_a_space_character_as_prefix(self):
         expect = 123456
         result = string_to_long(' 123456')
-        self.assertEqual(result, expect)       
+        self.assertEqual(result, expect)
+
+
+class TriNaryTreeTaseCase(unittest.TestCase):
+    def test_insert_one_node(self):
+        expect = "[5]"
+        tree = TriNaryTree()
+        tree.insert(5)
+        self.assertEqual(tree.__str__(), expect)
 
 
 if __name__ == '__main__':

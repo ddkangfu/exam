@@ -2,6 +2,7 @@
 
 
 class TreeNode(object):
+    #print_result = []
     def __init__(self, value, left=None, middle=None, right=None):
         self.value = value
         self.left = left
@@ -68,12 +69,13 @@ class TriNaryTree(object):
         else:
             return node
 
-    def _print(self, node):
+    def _print(self, node, print_result):
         if node:
+            print_result.append(node.value)
             print 'Node=%d' % node.value
-            self._print(node.left)
-            self._print(node.middle)
-            self._print(node.right)
+            self._print(node.left, print_result)
+            self._print(node.middle, print_result)
+            self._print(node.right, print_result)
 
     def insert(self, value):
         if self.root:
@@ -85,8 +87,9 @@ class TriNaryTree(object):
         pass
 
     def __str__(self):
-        self._print(self.root)
-        return 'Done'
+        print_result = []
+        self._print(self.root, print_result)
+        return print_result.__str__()
 
 
 if __name__ == '__main__':
