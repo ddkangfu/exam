@@ -84,7 +84,7 @@ class TriNaryTree(object):
             self.root = TreeNode(value)
 
     def delete(self, value):
-        pass
+        self._delete(self.root, value)
 
     def __str__(self):
         print_result = []
