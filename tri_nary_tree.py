@@ -38,10 +38,15 @@ class TriNaryTree(object):
         if not node:
             return node
 
-        if node.value == value:
+        if node.value < value:
+            node.right = self._delete(node.right, value)
+        elif node.value > value:
+            node.left = self._delete(node.left, value)
+        else:
             if (not node.right) and (not node.middle) and (not node.middle):
                 del node
                 return None
+
             if node.middle:
                 node.middle = self._delete(node.middle, value)
             else:
@@ -57,10 +62,6 @@ class TriNaryTree(object):
                     new_node = node.right
                     del node
                     return new_node
-        elif node.value < value:
-            node.right = self._delete(node.right, value)
-        else:
-            node.left = self._delete(node.left, value)
         return node
 
     def _find(self, node):
