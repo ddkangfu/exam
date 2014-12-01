@@ -3,11 +3,11 @@
 
 class TreeNode(object):
     #print_result = []
-    def __init__(self, value, left=None, middle=None, right=None):
+    def __init__(self, value):
         self.value = value
-        self.left = left
-        self.middle = middle
-        self.right = right
+        self.left = None
+        self.middle = None
+        self.right = None
 
 
 class TriNaryTree(object):
