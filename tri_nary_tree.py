@@ -33,7 +33,7 @@ class TriNaryTree(object):
                 self._insert(node.left, value)
             else:
                 node.left = TreeNode(value)
-    
+    """
     def _delete(self, node, value):
         if not node:
             return node
@@ -69,12 +69,31 @@ class TriNaryTree(object):
                 else:
                     node = node.left
         return node
+    """
+    
+    def _delete(self, node, value):
+        if not node:
+            return None
+        if node.value > value:
+            node.left = self._delete(node.left, value)
+        elif node.value < value:
+            node.right = self._delete(node.right, value)
+        else:
+            if node.middle:
+                node.middle = self._delete(node.middle, value)
+            elif node.right:
+                node.value = self._find(node.right).value
+                node.right = self._delete(node.right, node.value)
+            else:
+                node = node.left
+        return node
 
     def _find(self, node):
-        if node.left:
-            return _find(node.left)
-        else:
-            return node
+        #if node.left:
+        #    return _find(node.left)
+        #else:
+        #    return node
+        return _find(node.left) if node.left else node
 
     def _print(self, node, print_result):
         if node:
