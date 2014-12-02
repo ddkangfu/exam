@@ -83,15 +83,16 @@ class TriNaryTree(object):
             if node.middle:
                 node.middle = self._delete(node.middle, value)
             elif node.right and node.left:
-                node.value = self._find(node.right).value
-                node.right = self._delete(node.right, node.value)
+                min_node = self._find_min(node.right)
+                node.value = min_node.value
+                node.right = self._delete(node.right, min_node.value)
             else:
                 #node = node.left
                 node = node.right if node.right else node.left
 
         return node
 
-    def _find(self, node):
+    def _find_min(self, node):
         return _find(node.left) if node.left else node
 
     def _print(self, node, print_result):
