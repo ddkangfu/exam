@@ -89,10 +89,6 @@ class TriNaryTree(object):
         return node
 
     def _find(self, node):
-        #if node.left:
-        #    return _find(node.left)
-        #else:
-        #    return node
         return _find(node.left) if node.left else node
 
     def _print(self, node, print_result):
