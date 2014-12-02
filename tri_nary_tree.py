@@ -74,18 +74,21 @@ class TriNaryTree(object):
     def _delete(self, node, value):
         if not node:
             return None
-        if node.value > value:
+
+        if value < node.value:
             node.left = self._delete(node.left, value)
-        elif node.value < value:
+        elif value > node.value:
             node.right = self._delete(node.right, value)
         else:
             if node.middle:
                 node.middle = self._delete(node.middle, value)
-            elif node.right:
+            elif node.right and node.left:
                 node.value = self._find(node.right).value
                 node.right = self._delete(node.right, node.value)
             else:
-                node = node.left
+                #node = node.left
+                node = node.right if node.right else node.left
+
         return node
 
     def _find(self, node):
