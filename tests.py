@@ -107,9 +107,7 @@ class TriNaryTreeTaseCase(unittest.TestCase):
         self.assertEqual(str(tree), str(expect))
 
     def test_delete_node_on_the_left(self):
-        #TODO:可能算法有问题
-        #expect = [5, 2, 2, 5, 9, 7]
-        expect = [5, 5, 9, 7]
+        expect = [5, 2, 2, 5, 9, 7]
         tree = TriNaryTree()
         source = [5, 4, 9, 5, 7, 2, 2]
         for number in source:
@@ -127,16 +125,14 @@ class TriNaryTreeTaseCase(unittest.TestCase):
         self.assertEqual(str(tree), str(expect))                
     
     def test_delte_node_on_the_right(self):
-        #TODO:可能算法有问题
-        #expect = [5, 4, 2, 2, 5, 7]
-        expect = [5, 4, 2, 2, 5]
+        expect = [5, 4, 2, 2, 5, 7]
         tree = TriNaryTree()
         source = [5, 4, 9, 5, 7, 2, 2]
         for number in source:
             tree.insert(number)
         tree.delete(9)
         self.assertEqual(str(tree), str(expect))
-
+    """
     def test_delte_leaf_node_on_the_middle(self):
         expect = [5, 4, 2, 2, 5, 9]
         tree = TriNaryTree()
@@ -144,19 +140,8 @@ class TriNaryTreeTaseCase(unittest.TestCase):
         for number in source:
             tree.insert(number)
         tree.delete(11)
-        self.assertEqual(str(tree), str(expect))        
-
-    def test_delte_node_on_the_middle(self):
-        #TODO:可能算法有问题
-        #expect = [5, 4, 2, 2, 5, 7]
-        expect = [5, 4, 2, 2, 5]
-        tree = TriNaryTree()
-        source = [5, 4, 9, 5, 7, 2, 2]
-        for number in source:
-            tree.insert(number)
-        tree.delete(9)
-        self.assertEqual(str(tree), str(expect))        
-
+        self.assertEqual(str(tree), str(expect))
+    """
     def test_delete_inexist_node(self):
         expect = [5, 4, 2, 2, 5, 9, 7]
         tree = TriNaryTree()

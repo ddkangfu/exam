@@ -93,7 +93,7 @@ class TriNaryTree(object):
         return node
 
     def _find_min(self, node):
-        return _find(node.left) if node.left else node
+        return self._find_min(node.left) if node.left else node
 
     def _print(self, node, print_result):
         if node:
@@ -123,4 +123,8 @@ if __name__ == '__main__':
     a = [5, 4, 9, 5, 7, 2, 2]
     for x in a:
         t.insert(x)
+    print '[5, 4, 9, 5, 7, 2, 2] insert:'
+    print t
+    t.delete(5)
+    print '4 delted:'
     print t
