@@ -17,6 +17,9 @@ class TriNaryTree(object):
         self.root = None
      
     def _insert(self, node, parent, value):
+        """
+        递归在指定节点下插入指定值
+        """        
         if node.value < value:
             if node.right:
                 self._insert(node.right, node, value)
@@ -34,6 +37,9 @@ class TriNaryTree(object):
                 node.left = TreeNode(value, node)
     
     def _delete(self, node, value):
+        """
+        递归删除指定节点下的指定值
+        """
         if not node:
             return None
 
@@ -45,6 +51,7 @@ class TriNaryTree(object):
             if node.middle:
                 node.middle = self._delete(node.middle, value)
             elif node.right and node.left:
+                #从右子树里找到最小值作为被删节点的替换值
                 min_node = self._find_min_node(node.right)
                 node.value = min_node.value
                 node.right = self._delete(node.right, min_node.value)
@@ -60,26 +67,38 @@ class TriNaryTree(object):
         return node
 
     def _find_min_node(self, node):
+        """
+        查找节点下的最小值
+        """
         return self._find_min_node(node.left) if node.left else node
 
-    def _print(self, node, print_result):
+    def _traversal(self, node, print_result):
+        """
+        遍历三叉树，用于组织显示的数据
+        """
         if node:
             print_result.append(node.value)
             #print node
-            self._print(node.left, print_result)
-            self._print(node.middle, print_result)
-            self._print(node.right, print_result)
+            self._traversal(node.left, print_result)
+            self._traversal(node.middle, print_result)
+            self._traversal(node.right, print_result)
 
     def insert(self, value):
+        """
+        对外接口，用于向三叉树插入指定值的节点
+        """
         if self.root:
             self._insert(self.root, None, value)
         else:
             self.root = TreeNode(value)
 
     def delete(self, value):
+        """
+        对外接口，用于从三叉树中删除指值定节点
+        """
         self._delete(self.root, value)
 
     def __str__(self):
         print_result = []
-        self._print(self.root, print_result)
+        self._traversal(self.root, print_result)
         return print_result.__str__()
