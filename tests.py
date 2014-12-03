@@ -97,9 +97,8 @@ class TriNaryTreeTaseCase(unittest.TestCase):
         tree.delete(5)
         self.assertEqual(str(tree), str(expect))
     
-    
     def test_delete_root_node_with_middle_node(self):
-        expect = [7, 4, 2, 2, 9]
+        expect = [5, 4, 2, 2, 9, 7]
         tree = TriNaryTree()
         source = [5, 4, 9, 5, 7, 2, 2]
         for number in source:
@@ -142,16 +141,7 @@ class TriNaryTreeTaseCase(unittest.TestCase):
             tree.insert(number)
         tree.delete(9)
         self.assertEqual(str(tree), str(expect))
-    """
-    def test_delte_leaf_node_on_the_middle(self):
-        expect = [5, 4, 2, 2, 5, 9]
-        tree = TriNaryTree()
-        source = [5, 4, 9, 5, 11, 2, 2]
-        for number in source:
-            tree.insert(number)
-        tree.delete(11)
-        self.assertEqual(str(tree), str(expect))
-    """
+
     def test_delete_inexist_node(self):
         expect = [5, 4, 2, 2, 5, 9, 7]
         tree = TriNaryTree()
